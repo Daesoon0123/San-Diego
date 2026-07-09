@@ -27,32 +27,32 @@
   <section id="benefits" class="section">
     <h2>학생 혜택</h2>
     <div class="card-grid">
-      <div class="card">
+      <div class="card" data-id="transit" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🚌</div>
         <h3>무료 대중교통</h3>
         <p>학생증(UCSD ID)으로 MTS 버스와 트롤리를 무료로 이용할 수 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="software" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">💻</div>
         <h3>소프트웨어 라이선스</h3>
         <p>Microsoft Office, Adobe Creative Cloud 등 다양한 소프트웨어를 무료 또는 할인된 가격으로 이용할 수 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="health" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🏥</div>
         <h3>학생 건강 보험 및 진료</h3>
         <p>Student Health Services에서 저렴하거나 무료로 진료 및 상담을 받을 수 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="discounts" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🎟️</div>
         <h3>문화 · 여가 할인</h3>
         <p>박물관, 영화관, 테마파크 등 다양한 곳에서 학생 할인을 받을 수 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="library" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">📚</div>
         <h3>도서관 및 학습 자료</h3>
         <p>Geisel Library를 포함한 여러 도서관에서 방대한 자료와 스터디 공간을 무료로 이용할 수 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="tutoring" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🧑‍🏫</div>
         <h3>튜터링 · 커리어 서비스</h3>
         <p>무료 튜터링, 라이팅 센터, 커리어 상담 및 인턴십 지원 프로그램을 이용할 수 있습니다.</p>
@@ -63,32 +63,32 @@
   <section id="facilities" class="section alt">
     <h2>캠퍼스 시설</h2>
     <div class="card-grid">
-      <div class="card">
+      <div class="card" data-id="gym" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🏋️</div>
         <h3>RIMAC / Canyonview 체육관</h3>
         <p>최신 헬스 기구, 수영장, 암벽등반 시설과 다양한 그룹 운동 클래스를 즐길 수 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="dining" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🍽️</div>
         <h3>다이닝 홀 & 카페</h3>
         <p>캠퍼스 곳곳의 다이닝 홀과 카페에서 다양한 음식을 만나볼 수 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="research" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🔬</div>
         <h3>연구 시설 및 실험실</h3>
         <p>학부생도 참여 가능한 다양한 연구실과 최첨단 실험 장비를 갖춘 시설이 마련되어 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="beach" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🌊</div>
         <h3>Scripps 해변 & 아웃도어 시설</h3>
         <p>캠퍼스 인근 Scripps 해변에서 휴식을 취하거나 아웃도어 프로그램에 참여할 수 있습니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="arts" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🎭</div>
         <h3>공연 · 예술 공간</h3>
         <p>Price Center, The Loft 등에서 공연, 전시, 학생 이벤트가 열립니다.</p>
       </div>
-      <div class="card">
+      <div class="card" data-id="parking" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="card-icon">🅿️</div>
         <h3>주차 및 셔틀</h3>
         <p>캠퍼스 곳곳을 연결하는 무료 셔틀버스와 학생 주차 시설을 이용할 수 있습니다.</p>
@@ -101,5 +101,15 @@
   <p>&copy; 2026 UCSD Perks. Made for Tritons.</p>
 </footer>
 
+<div id="detail-modal" class="modal-overlay" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" aria-label="닫기">&times;</button>
+    <div class="modal-icon"></div>
+    <h3 class="modal-title" id="modal-title"></h3>
+    <p class="modal-detail"></p>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
