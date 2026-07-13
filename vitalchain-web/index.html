@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VitalChain — 수술 중 저혈압 예측 AI</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>VitalChain<small>IOH Prediction</small></div>
+    <div class="nav-links">
+      <a href="#problem">문제 &amp; 목표</a>
+      <a href="#persona">타겟 사용자</a>
+      <a href="#value">차별적 가치</a>
+      <a href="#features">핵심 기능</a>
+      <a href="#stories">사용자 스토리</a>
+    </div>
+    <a class="nav-cta" href="dashboard.html">대시보드 데모 →</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">● PRD One-Pager · Surgical IOH Prediction</span>
+    <h1 class="hero-title">저혈압이 <span class="grad">일어나기 전에</span><br />예측하고, 예후로 연결합니다.</h1>
+    <p class="hero-sub">
+      VitalChain은 수술 중 실시간 혈압 파형과 생체 신호를 지속적으로 분석하여 저혈압 발생을 사전에 예측하고,
+      이를 이해하기 쉬운 수술 후 위험도 점수로 전환하는 AI 의사결정 지원 도구입니다.
+    </p>
+    <p class="hero-sub-en">
+      An AI decision-support tool that forecasts intraoperative hypotension before it happens and translates it into an interpretable postoperative risk score.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="dashboard.html">대시보드 데모 보기 →</a>
+      <a class="btn-secondary" href="#problem">PRD 자세히 보기</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">5–15분</div><div class="label">사전 예측 리드타임</div></div>
+      <div class="hero-stat"><div class="num">0–100</div><div class="label">수술 후 위험도 점수</div></div>
+      <div class="hero-stat"><div class="num">Explainable</div><div class="label">근거 기반 설명</div></div>
+      <div class="hero-stat"><div class="num">OR + EMR</div><div class="label">기존 장비 연동</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">1. Problem &amp; Goal</div>
+      <h2 class="section-title">문제 정의 및 목표</h2>
+      <p class="section-desc">현재 모니터링 장비는 저혈압이 "이미 발생했다"는 사실만 알려줍니다. VitalChain은 그 이전 단계를 겨냥합니다.</p>
+    </div>
+    <div class="pg-grid">
+      <div class="pg-card problem">
+        <span class="tag">Problem 문제</span>
+        <h3>사후 대응에 머무르는 현재 모니터링</h3>
+        <p>수술 중 저혈압은 급성 신장 손상, 심근 손상, 뇌졸중, 사망 등 심각한 합병증의 강력한 예측 지표입니다. 그러나 현재 장비는 혈압이 이미 떨어진 이후에만 경고를 줄 뿐, 향후 예후에 미칠 영향은 예측하지 못해 의료진이 사후 대응에 그치는 경우가 많습니다.</p>
+        <p class="en">Current monitors only flag that BP has already dropped — they don't forecast how that drop will translate into postoperative risk.</p>
+      </div>
+      <div class="pg-card goal">
+        <span class="tag">Goal 목표</span>
+        <h3>예측 → 해석 가능한 위험도 점수</h3>
+        <p>수술 중 실시간 혈압 파형과 관련 생체 신호·EMR 정보를 지속적으로 분석하여 (1) 저혈압 발생을 사전에 예측하고, (2) 이를 이해하기 쉬운 수술 후 위험도 점수로 전환함으로써, 의료진이 사전 예방적 조치를 취할 수 있도록 합니다.</p>
+        <p class="en">Predict the near-term likelihood of a hypotensive episode and translate it into an interpretable postoperative risk score.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="persona">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">2. Target User</div>
+      <h2 class="section-title">타겟 사용자 (Persona)</h2>
+      <p class="section-desc">수술실 내 즉각적인 의사결정이 필요한 마취통증의학과 전문의를 중심으로, 병원 QI/경영진의 니즈까지 고려합니다.</p>
+    </div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-head">
+          <div class="persona-avatar">김</div>
+          <div><h3>"김OO 마취통증의학과 전문의"</h3><span>Primary Persona · Dr. Kim, Anesthesiologist</span></div>
+        </div>
+        <ul>
+          <li>15년 경력, 대형종합병원 수술실 근무. 한 번에 여러 모니터(혈압·심전도·산소포화도 등)를 주시하며 다수의 알람을 처리 — 알람 피로도 높음.</li>
+          <li>숫자 나열이 아닌 "지금 이 환자가 얼마나 위험한가"를 즉시 판단할 수 있는 단일 지표가 필요. 조치를 결정할 시간이 몇 분 이내로 매우 짧음.</li>
+          <li>기존 장비의 단순 threshold alarm에 불만 — false alarm이 많고, 예후와 연결되지 않음.</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <div class="persona-head">
+          <div class="persona-avatar">QI</div>
+          <div><h3>병원 QI(질 관리)/경영진</h3><span>Secondary Persona</span></div>
+        </div>
+        <ul>
+          <li>수술 성공률, 합병증 발생률을 KPI로 관리.</li>
+          <li>각 수술의 위험도 데이터를 사후 집계하여 프로세스 개선 및 비용 절감에 활용하고자 함.</li>
+          <li>병원 단위의 집계·분석 리포트를 통해 시스템적 개선 지점을 파악하려 함.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="value">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">3. Value — Why Ours</div>
+      <h2 class="section-title">차별적 가치</h2>
+      <p class="section-desc">단순 임계값 알람과 VitalChain의 차이입니다.</p>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr><th>구분</th><th>기존 방식</th><th class="vc-col">VitalChain</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>경고 방식</td>
+          <td class="old">임계값 기반 사후 알람 (혈압 &lt;65mmHg 시 경고)</td>
+          <td class="new">저혈압 발생 전 예측 + 수술 후 예후까지 연결된 위험도 점수</td>
+        </tr>
+        <tr>
+          <td>정보 해석</td>
+          <td class="old">숫자만 표시, 해석은 의료진 몫</td>
+          <td class="new">위험도 점수 + 원인 설명(Explainability)까지 제공</td>
+        </tr>
+        <tr>
+          <td>분석 범위</td>
+          <td class="old">개별 수술 단위 정보만 존재</td>
+          <td class="new">병원 단위 집계 분석으로 QI/비용 절감까지 지원</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="value-quote">
+      <p>단순 임계값 알람과 달리, VitalChain은 저혈압을 사전에 예측하고 이를 수술 후 예후와 연결된 위험도 점수로 제공합니다. 점수의 "이유"까지 함께 제시하여 의료진이 신뢰하고 즉시 활용할 수 있습니다.</p>
+      <p>Unlike reactive threshold alarms, VitalChain forecasts hypotensive risk minutes ahead and links it to postoperative outcomes — giving doctors a "why" behind the score, not just a number.</p>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">4. Must-Have Features</div>
+      <h2 class="section-title">핵심 기능</h2>
+      <p class="section-desc">v1 출시를 위한 5가지 필수 기능입니다.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-num">01</div>
+        <h3>실시간 저혈압 예측 대시보드</h3>
+        <p>향후 5–15분 내 저혈압 발생 확률을 지속 업데이트하여 시각화합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02</div>
+        <h3>수술 후 위험도 점수</h3>
+        <p>저혈압 패턴을 종합해 0–100 등급의 사망/합병증 위험도를 산출합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03</div>
+        <h3>설명 가능한 위험 요인 패널</h3>
+        <p>"현재 위험도 상승은 MAP 저하 지속 8분 + 심박수 변동성 증가에서 기인"처럼 근거를 표시합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">04</div>
+        <h3>임계 상황 알림 및 대응 가이드</h3>
+        <p>위험도 급상승 시 알람과 함께 근거 기반 권고 조치(수액/승압제 조절 등)를 제시합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">05</div>
+        <h3>OR 모니터/EMR 연동</h3>
+        <p>기존 수술실 모니터링 장비 및 병원 EMR과 데이터를 연동합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stories">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">5. User Stories</div>
+      <h2 class="section-title">사용자 스토리</h2>
+    </div>
+    <div class="story-list">
+      <div class="story-item">
+        <div class="story-role">마취과 전문의</div>
+        <div>
+          <p>수술 중 지속적으로 업데이트되는 위험도 점수를 보고 싶다. 그래야 심각한 저혈압이 발생하기 전에 수액이나 승압제 투여 여부를 결정할 수 있다.</p>
+          <p class="en">As an anesthesiologist, I want a continuously updated risk score, so I can intervene before a critical drop occurs.</p>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-role">집도의</div>
+        <div>
+          <p>저혈압 발생 전 조기 경고를 받고 싶다. 그래야 수술 중 중요하지 않은 단계를 잠시 멈출 수 있다.</p>
+          <p class="en">As a surgeon, I want an early warning before a hypotensive episode, so I can pause non-critical steps.</p>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-role">마취과 전문의</div>
+        <div>
+          <p>어떤 생체 신호 변화가 위험도 상승을 유발했는지 알고 싶다. 그래야 점수를 신뢰하고 확신 있게 대처할 수 있다.</p>
+          <p class="en">As an anesthesiologist, I want to understand which vital sign trends are driving the risk increase.</p>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-role">병원 QI 담당자</div>
+        <div>
+          <p>전체 수술에 대한 위험도 데이터를 집계하여 보고 싶다. 그래야 시스템적 패턴을 파악하고 수술 후 합병증 관련 비용을 줄일 수 있다.</p>
+          <p class="en">As hospital QI staff, I want aggregated risk analytics across all surgeries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="scope">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">6. Out of Scope</div>
+      <h2 class="section-title">v1 범위 제외</h2>
+    </div>
+    <div class="scope-box">
+      <ul>
+        <li>자율/자동 개입(예: 약물 자동 투여 조절)은 포함하지 않음 — 본 시스템은 권고만 제공하며 실제 조치는 의료진이 수행합니다.</li>
+        <li>임상적 판단을 대체하거나 규제 승인된 진단 기기로 사용하는 것은 v1의 목표가 아닙니다 (의사결정 지원 도구).</li>
+        <li>소아 및 수술실 외 환경(중환자실/병동)은 v1 범위에서 제외됩니다.</li>
+        <li>예측 범위는 혈압 기반 위험도에 한정하며, 감염·출혈 등 다른 유형의 합병증 예측은 이번 릴리즈에 포함하지 않습니다.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>실제 수술실에서 어떻게 보일까요?</h2>
+    <p>실시간 예측, 위험도 점수, 설명 가능한 패널까지 — 인터랙티브 대시보드 데모로 확인해보세요.</p>
+    <a class="btn-primary" href="dashboard.html">대시보드 데모 보기 →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>VitalChain — Surgical Intraoperative Hypotension (IOH) Prediction PRD</div>
+    <div>Product Requirements Document · One-Pager</div>
+  </div>
+</footer>
+
+</body>
+</html>

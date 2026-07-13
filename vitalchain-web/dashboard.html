@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VitalChain — 실시간 저혈압 예측 대시보드</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <div class="brand"><span class="dot"></span>VitalChain</div>
+    <a class="dash-nav-item active">📊 실시간 대시보드</a>
+    <a class="dash-nav-item">🧠 설명 가능성</a>
+    <a class="dash-nav-item">🔔 알림 이력</a>
+    <a class="dash-nav-item">🔗 장비/EMR 연동</a>
+    <a class="dash-nav-item">🏥 QI 집계 리포트</a>
+    <div class="spacer"></div>
+    <a class="dash-back" href="index.html">← PRD 소개 페이지로</a>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-topbar">
+      <div class="patient-info">
+        <h1>수술방 3 · 환자 #A-2291</h1>
+        <div class="meta">
+          <span>68세 · 여</span>
+          <span>슬관절 전치환술 (TKA)</span>
+          <span>수술 경과 01:42:18</span>
+          <span>집도의: 이OO / 마취과: 김OO</span>
+        </div>
+      </div>
+      <div class="live-badge"><span class="blink"></span>LIVE · 5–15분 예측 중</div>
+    </div>
+
+    <div class="alert-banner" id="alertBanner">
+      <div class="alert-icon">!</div>
+      <div class="alert-body">
+        <h3>임계 상황 알림 — 저혈압 위험 급상승</h3>
+        <p>현재 위험도 상승은 MAP 저하 지속 8분 + 심박수 변동성 증가에서 기인합니다. 권고: 수액 볼루스 투여 및 승압제(노르에피네프린) 조절 검토.</p>
+      </div>
+      <div class="alert-actions">
+        <a class="alert-btn ghost">근거 보기</a>
+        <a class="alert-btn">조치 확인</a>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="panel gauge-card">
+        <h2>수술 후 위험도 점수 <span style="font-weight:400;">Postoperative Risk</span></h2>
+        <div class="gauge-wrap">
+          <svg id="gaugeSvg" width="220" height="140" viewBox="0 0 220 140">
+            <path d="M 20 120 A 90 90 0 0 1 200 120" fill="none" stroke="#1f2c47" stroke-width="18" stroke-linecap="round"/>
+            <path id="gaugeArc" d="M 20 120 A 90 90 0 0 1 200 120" fill="none" stroke="#f5636e" stroke-width="18" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="70"/>
+          </svg>
+          <div class="gauge-value" id="gaugeValue" style="color:var(--danger)">72</div>
+          <div class="gauge-label">/ 100 · High Risk</div>
+          <div class="gauge-tier" id="gaugeTier" style="background:var(--danger-soft); color:var(--danger);">고위험 · 즉시 검토 필요</div>
+        </div>
+        <div class="risk-row"><span>5분 내 저혈압 확률</span><b id="prob5">61%</b></div>
+        <div class="risk-row"><span>15분 내 저혈압 확률</span><b id="prob15">83%</b></div>
+        <div class="risk-row"><span>최근 갱신</span><b>방금 전</b></div>
+      </div>
+
+      <div class="panel wave-card">
+        <h2>실시간 혈압 파형 &amp; 예측 <span style="font-weight:400;">Real-time BP + Forecast</span></h2>
+        <canvas id="waveCanvas" width="720" height="190"></canvas>
+        <div class="wave-legend">
+          <div class="lg"><span class="sw" style="background:var(--blue)"></span>실측 MAP (mmHg)</div>
+          <div class="lg"><span class="sw" style="background:var(--danger)"></span>예측 구간 (5–15분)</div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span>임계선 65mmHg</div>
+        </div>
+        <div class="vitals-row">
+          <div class="vital-tile warn"><div class="v-label">MAP</div><div class="v-num">64<small> mmHg</small></div></div>
+          <div class="vital-tile safe"><div class="v-label">HR</div><div class="v-num">88<small> bpm</small></div></div>
+          <div class="vital-tile safe"><div class="v-label">SpO₂</div><div class="v-num">97<small> %</small></div></div>
+          <div class="vital-tile warn"><div class="v-label">HRV</div><div class="v-num">↑ 42<small> ms</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-grid" style="margin-top:20px;">
+      <div class="panel">
+        <h2>설명 가능한 위험 요인 <span style="font-weight:400;">Explainability</span></h2>
+        <div class="summary-box">
+          "현재 위험도 상승은 <b>MAP 저하 지속 8분</b> + <b>심박수 변동성 증가</b>에서 기인합니다."
+        </div>
+        <div class="factor-item">
+          <div class="factor-top"><span>MAP 저하 지속시간 (8분)</span><b>44%</b></div>
+          <div class="factor-bar"><div class="factor-fill" style="width:44%"></div></div>
+          <div class="factor-note">평균 동맥압이 65mmHg 근처에서 8분 이상 지속적으로 낮게 유지됨</div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-top"><span>심박수 변동성(HRV) 증가</span><b>27%</b></div>
+          <div class="factor-bar"><div class="factor-fill" style="width:27%"></div></div>
+          <div class="factor-note">자율신경계 보상 반응 패턴이 저혈압 전조 신호와 일치</div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-top"><span>수액 투여 속도 저하</span><b>18%</b></div>
+          <div class="factor-bar"><div class="factor-fill" style="width:18%"></div></div>
+          <div class="factor-note">최근 20분간 투여 속도가 계획 대비 감소</div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-top"><span>마취 심도(BIS) 변화</span><b>11%</b></div>
+          <div class="factor-bar"><div class="factor-fill" style="width:11%"></div></div>
+          <div class="factor-note">기여도는 낮으나 관찰 대상 신호로 포함됨</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>OR 모니터 / EMR 연동 <span style="font-weight:400;">Device &amp; EHR Integration</span></h2>
+        <div class="integration-list">
+          <div class="integration-item"><span><span class="status-dot on"></span>혈압 모니터 (Invasive ABP)</span><span style="color:var(--text-faint)">연동됨</span></div>
+          <div class="integration-item"><span><span class="status-dot on"></span>심전도 / SpO₂ 모니터</span><span style="color:var(--text-faint)">연동됨</span></div>
+          <div class="integration-item"><span><span class="status-dot on"></span>병원 EMR (수술 기록)</span><span style="color:var(--text-faint)">연동됨</span></div>
+          <div class="integration-item"><span><span class="status-dot warn"></span>수액/승압제 인퓨전 펌프</span><span style="color:var(--text-faint)">동기화 지연 2초</span></div>
+        </div>
+        <div class="risk-row" style="margin-top:18px;">
+          <span>이번 수술 알림 발생 횟수</span><b>3회</b>
+        </div>
+        <div class="risk-row">
+          <span>QI 집계 대상 수술 (오늘)</span><b>14건</b>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
